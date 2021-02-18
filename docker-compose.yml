@@ -1,0 +1,30 @@
+version: "3.7"
+
+services:
+  library-api:
+    build: ./library-api
+    container_name: capstone-cs.eng.utah.edu:5050/pellego/apis/library-api:latest
+    restart: always
+    expose:
+      - 8080
+
+  learning-modules:
+    build: ./learning-modules
+    container_name: capstone-cs.eng.utah.edu:5050/pellego/apis/learning-modules:latest
+    restart: always
+    expose:
+      - 8081
+
+  users-api:
+    build: ./users-api
+    container_name: capstone-cs.eng.utah.edu:5050/pellego/apis/users-api:latest
+    restart: always
+    expose:
+      - 8082
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"
